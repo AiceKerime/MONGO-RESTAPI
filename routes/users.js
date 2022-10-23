@@ -58,10 +58,13 @@ module.exports = (db) => {
 
       const data = await db.collection("dataBread").find(wheres).skip(offset).limit(limit).sort(sortMongo).toArray()
 
-      res.json(data)
+      res.json({
+        success: true,
+        data
+      })
     } catch (error) {
       console.log(error)
-      res.send(error)
+      res.json({ success: false })
     }
   });
 
@@ -70,23 +73,28 @@ module.exports = (db) => {
   //   res.render('users/add')
   // })
 
-  router.post('/add', (req, res) => {
-    const { string, integer, float, date, boolean } = req.body
+  router.post('/add', async (req, res) => {
+    try {
+      const { string, integer, float, date, boolean } = req.body
 
-    let Obj = {
-      string: string,
-      integer: Number(integer),
-      float: parseFloat(float),
-      date: date,
-      boolean: JSON.parse(boolean)
-    }
+      let Obj = {
+        string: string,
+        integer: Number(integer),
+        float: parseFloat(float),
+        date: date,
+        boolean: JSON.parse(boolean)
+      }
 
-    db.collection("dataBread").insertOne(Obj).toArray((err) => {
-      if (err) return res.json({ success: false })
+      const addData = await db.collection("dataBread").insertOne(Obj)
+
       res.json({
         success: true,
+        addData
       })
-    })
+    } catch (err) {
+      console.log(err)
+      res.json({ success: false })
+    }
   })
 
   // ROUTER EDIT
@@ -111,16 +119,19 @@ module.exports = (db) => {
         integer: Number(integer),
         float: parseFloat(float),
         date: date,
-        boolean: JSON.parse(boolean)
+        boolean: boolean
       }
 
       const updateData = await db.collection("dataBread").updateOne({ "_id": ObjectId(`${req.params.id}`) }, { $set: Obj })
 
-      res.json(updateData)
+      res.json({
+        success: true,
+        updateData
+      })
 
     } catch (err) {
       console.log(err)
-      res.send(err)
+      res.json({ success: false })
     }
   })
 
@@ -129,10 +140,13 @@ module.exports = (db) => {
     try {
       const deleteData = await db.collection("dataBread").deleteOne({ "_id": ObjectId(`${req.params.id}`) })
 
-      res.json(deleteData)
+      res.json({
+        success: true,
+        deleteData
+      })
     } catch (err) {
       console.log(err)
-      res.send(err)
+      res.json({ success: false })
     }
 
   });
