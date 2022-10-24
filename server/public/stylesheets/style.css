@@ -1,0 +1,19 @@
+.card {
+    border-radius: 1rem;
+    border: 2px dotted #000;
+    background-color: #cbd5e1;
+}
+
+.form-control {
+    border: 1px solid #000;
+    color: black;
+}
+
+.form-label {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.bg-slate-300 {
+    background-color: #e2e8f0;
+}
