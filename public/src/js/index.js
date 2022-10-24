@@ -35,7 +35,7 @@ const readData = () => {
             `
         })
         console.log(html)
-        document.getElementById('body-users').innerHTML = html
+        document.getElementById('table-users').innerHTML = html
         pagination();
     })
 }
