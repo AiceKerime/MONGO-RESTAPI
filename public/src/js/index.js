@@ -5,7 +5,6 @@ var params = {
 }
 
 const readData = () => {
-    console.log('Jalan')
     fetch(`http://localhost:3002/users?`).then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
