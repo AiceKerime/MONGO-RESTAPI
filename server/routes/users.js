@@ -73,7 +73,7 @@ module.exports = (db) => {
   //   res.render('users/add')
   // })
 
-  router.post('/', async (req, res) => {
+  router.post('/add', async (req, res) => {
     try {
       const { string, integer, float, date, boolean } = req.body
 
