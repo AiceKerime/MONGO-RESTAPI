@@ -48,9 +48,12 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div id="button">
                         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>
                             Save</button>
+
+                        <button type="reset" class="btn btn-danger"><i class="fa-sharp fa-solid fa-xmark"></i>
+                            Cancel</button>
                     </div>
                 </form>
             </div>
@@ -58,26 +61,26 @@
             <div class="card my-5 px-3 py-3 mx-2">
                 <h2 class="text-center">Search</h2>
 
-                <form action="" method="get">
+                <form action="" id="form-search" method="get">
                     <div class="mb-3">
                         <label for="string" class="form-label"><input type="checkbox"> String</label>
-                        <input type="text" class="form-control" id="string">
+                        <input type="text" class="form-control" id="searchString">
                     </div>
                     <div class="mb-3">
                         <label for="integer" class="form-label"><input type="checkbox"> Integer</label>
-                        <input type="number" class="form-control" id="integer">
+                        <input type="number" class="form-control" id="searchInteger">
                     </div>
                     <div class="mb-3">
                         <label for="float" class="form-label"><input type="checkbox"> Float</label>
-                        <input type="number" step="0.005" class="form-control" id="float">
+                        <input type="number" step="0.005" class="form-control" id="searchFloat">
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label"><input type="checkbox"> Date</label>
-                        <input type="date" class="form-control" id="date">
+                        <input type="date" class="form-control" id="searchDate">
                     </div>
                     <div class="mb-3">
                         <label for="boolean" class="form-label"><input type="checkbox"> Boolean</label>
-                        <select class="form-control" id="boolean">
+                        <select class="form-control" id="searchBoolean">
                             <option value="" selected disabled>-- Choose Boolean --</option>
                             <option value=true>True</option>
                             <option value=false>False</option>
@@ -85,10 +88,13 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
-                            Search</button>
+                        <form action="" method="get">
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
+                                Search</button>
+                        </form>
 
-                        <input type="reset" value="Reset" class="btn btn-primary color">
+                        <button type="reset" class="btn btn-primary color"><i class="fa-solid fa-arrows-rotate"></i>
+                            Reset</button>
                     </div>
                 </form>
             </div>
@@ -114,6 +120,10 @@
                 <tbody id="table-users">
                 </tbody>
             </table>
+
+            <div id="pagination">
+
+            </div>
         </div>
     </div>
     <script src="./src/js/index.js"></script>

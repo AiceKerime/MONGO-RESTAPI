@@ -1,5 +1,5 @@
 let idEdit = null;
-var params = {
+let params = {
     display: 3,
     page: 1
 }
@@ -81,7 +81,7 @@ const saveData = (e) => {
 }
 
 const removeData = (id) => {
-    fetch(`http://localhost:3002/users/delete/${id}`, {
+    fetch(`http://localhost:3002/users/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -127,19 +127,19 @@ function changePage(page) {
     return false
 }
 
-// document.getElementById('form-search').addEventListener('submit', function (event) {
-//     event.preventDefault()
-//     const page = 1
-//     const string = document.getElementById('searchString').value
-//     const integer = document.getElementById('searchInteger').value
-//     const float = document.getElementById('searchFloat').value
-//     const startDate = document.getElementById('searchStartDate').value
-//     const endDate = document.getElementById('searchEndDate').value
-//     const boolean = document.getElementById('searchBoolean').value
-//     params = { ...params, string, integer, float, startDate, endDate, boolean, page }
-//     // let link = new URLSearchParams(params).toString()
-//     readData()
-// })
+document.getElementById('form-search').addEventListener('submit', (event) => {
+    event.preventDefault()
+    const page = 1
+    const string = document.getElementById('searchString').value
+    const integer = document.getElementById('searchInteger').value
+    const float = document.getElementById('searchFloat').value
+    const startDate = document.getElementById('searchStartDate').value
+    const endDate = document.getElementById('searchEndDate').value
+    const boolean = document.getElementById('searchBoolean').value
+    params = { ...params, string, integer, float, startDate, endDate, boolean, page }
+
+    readData()
+})
 
 document.addEventListener('click', function (e) {
     try {
