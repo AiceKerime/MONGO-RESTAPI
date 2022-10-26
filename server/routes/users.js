@@ -98,17 +98,19 @@ module.exports = (db) => {
   })
 
   // ROUTER EDIT
-  // router.get('/edit/:id', async (req, res) => {
-  //   try {
-  //     const result = await db.collection("dataBread").findOne({ "_id": ObjectId(`${req.params.id}`) })
+  router.get('/edit/:id', async (req, res) => {
+    try {
+      const data = await db.collection("dataBread").findOne({ "_id": ObjectId(`${req.params.id}`) })
 
-  //     res.json(result)
-
-  //   } catch (err) {
-  //     console.log(err)
-  //     res.send(err)
-  //   }
-  // })
+      res.json({
+        success: true,
+        data
+      })
+    } catch (err) {
+      console.log(err)
+      res.send(err)
+    }
+  })
 
   router.put('/edit/:id', async (req, res) => {
     try {
